@@ -12,21 +12,24 @@ import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext } from "react";
 export const AppContext = createContext();
+
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
+  const [cart, setCart] = useState([]);
+
   return (
     <div>
-      <AppContext.Provider value={{ users, setUsers, user, setUser }}>
+      <AppContext.Provider value={{ users, setUsers, user, setUser, cart, setCart }}>
         <BrowserRouter>
           <Header />
           <Routes>
             <Route index element={<Product />} />
-            <Route path="/" element={<Product />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/logout" element={<Logout />}></Route>
-            <Route path="/register" element={<Register />}></Route>
+            <Route path="/" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
           <Footer />
         </BrowserRouter>
