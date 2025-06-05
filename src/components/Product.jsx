@@ -6,6 +6,7 @@ import axios from "axios";
 export default function Product() {
   const { user, cart = [], setCart } = useContext(AppContext);
   const [products, setProducts] = useState([]);
+  const [msg, setMsg] = useState("");
 
   const fetchProducts = async () => {
     const res = await axios.get("https://gcet-node-app-sigma.vercel.app/products/all");
@@ -13,8 +14,13 @@ export default function Product() {
   };
 
   const handleAddToCart = (product) => {
+    if (!user || !user.token) {
+      setMsg("Please log in to add items to the cart.");
+      return;
+    }
     if (setCart) {
       setCart([...cart, product]);
+      setMsg("");
     }
   };
 
@@ -24,7 +30,8 @@ export default function Product() {
 
   return (
     <div className="product-list">
-      <h3>Welcome {user.name}!</h3>
+      <h3>Welcome {user && user.name ? user.name : "Guest"}!</h3>
+      {msg && <p className="cart-message">{msg}</p>}
       <h2>Product List</h2>
       <div className="products-grid">
         {products &&
