@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import axios from "axios";
+import "./Product.css";
 
 export default function Product() {
   const { user, cart = [], setCart } = useContext(AppContext);
@@ -16,6 +17,7 @@ export default function Product() {
   const handleAddToCart = (product) => {
     if (!user || !user.token) {
       setMsg("Please log in to add items to the cart.");
+      setTimeout(() => setMsg(""), 1500);
       return;
     }
     if (setCart) {
@@ -31,7 +33,12 @@ export default function Product() {
   return (
     <div className="product-list">
       <h3>Welcome {user && user.name ? user.name : "Guest"}!</h3>
-      {msg && <p className="cart-message">{msg}</p>}
+      {msg && (
+        <div className="cart-message">
+          {msg}
+          <div className="timer-bar"></div>
+        </div>
+      )}
       <h2>Product List</h2>
       <div className="products-grid">
         {products &&
