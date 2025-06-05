@@ -4,7 +4,6 @@ body {
   background: #f7f7f7;
 }
 
-
 .App {
   max-width: 600px;
   margin: 40px auto;
@@ -17,30 +16,6 @@ body {
 h1, h3 {
   color: #1976d2;
   text-align: center;
-}
-
-input[type="text"],
-input[type="password"] {
-  padding: 8px;
-  margin: 6px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 220px;
-}
-
-button {
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.2s;
-}
-
-button:hover {
-  background: #125ea2;
 }
 
 hr {
@@ -66,7 +41,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
 
 .product-list {
   padding: 32px 0;
@@ -132,4 +106,3 @@ a:hover {
 .add-cart-btn:hover {
   background: #125ea2;
 }
-
